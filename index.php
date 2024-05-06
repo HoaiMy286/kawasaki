@@ -37,7 +37,7 @@
 					<div class="card-body">
 						<h5 class="p3"><?php echo $result_pf['productName']; ?></h5>
 						<div class="cart-greenSpacer"></div>
-						<p class="card-text">Price: <?php echo $result_pf['productPrice'] ?>đ</p>
+						<p class="card-text">Price: <?php echo number_format($result_pf['productPrice'], 0, '.', ','); ?>đ</p>
 					</div>
 				</a>
 			</div>

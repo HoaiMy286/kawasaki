@@ -1,4 +1,4 @@
-<div class="footer">
+<div id="contact" class="footer">
     <div class="col-lg-4 col-md-4 col-sm-4">
         <div class="footer-part">
             <h2 class="heading-footer">CONTAC INFO</h2>
@@ -41,6 +41,24 @@
     </div>
     </div>
 </div>
+
+<script>
+    // Lấy tham chiếu của liên kết "CONTACT"
+    var contactLink = document.querySelector('a[href="#contact"]');
+
+    // Xử lý sự kiện nhấp vào liên kết
+    contactLink.addEventListener('click', function(event) {
+        // Ngăn chặn hành vi mặc định của liên kết
+        event.preventDefault();
+
+        // Lấy vị trí của phần "CONTACT" trong tài liệu
+        var contactSection = document.getElementById('contact');
+
+        // Cuộn trang đến phần "CONTACT" với hiệu ứng mượt
+        contactSection.scrollIntoView({ behavior: 'smooth' });
+    });
+</script>
+
 </body>
 
 </html>

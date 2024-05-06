@@ -80,6 +80,7 @@ class cart
         $result = $this->db->delete($query);
         return $result;
     }
+    
     public function check_cart()
     {
         $sId = session_id();
@@ -87,12 +88,91 @@ class cart
         $result = $this->db->delete($query);
         return $result;
     }
+    public function check_order($customer_id)
+    {
+        $sId = session_id();
+        $query = "SELECT * FROM tbl_order WHERE customer_id = '$customer_id'";
+        $result = $this->db->select($query);
+        return $result;
+    }
+
     public function delete_all_data_cart()
     {
         $sId = session_id();
         $query = "DELETE FROM tbl_cart WHERE sId = '$sId'";
         $result = $this->db->delete($query);
         return $result;
+    }
+
+    public function insertOrder($customer_id){
+        $sId = session_id();
+        $query = "SELECT * FROM tbl_cart WHERE sId = '$sId'";
+        $get_product = $this->db->select($query);
+        if($get_product){
+            while($result = $get_product->fetch_assoc()){
+                $productId = $result['productId'];
+                $productName = $result['productName'];
+                $quantity = $result['quantity'];
+                $price = $result['price'] * $quantity;
+                $immage = $result['image'];
+                $customer_id = $customer_id;
+
+                $query_order = "INSERT INTO tbl_order(productId, productName, quantity, price, image, customer_id)
+                                VALUES('$productId', '$productName', '$quantity', '$price', '$immage', '$customer_id')";
+
+                $insert_order = $this->db->insert($query_order);                
+            }
+        }
+    }
+
+    public function delete_cart_order($orderid)
+    {
+        $orderid = mysqli_real_escape_string($this->db->link, $orderid);
+        $query = "DELETE FROM tbl_order WHERE id = '$orderid'";
+        $result = $this->db->delete($query);
+
+        if($result){
+            $successAlert = '<div class="alert alert-success alert-dismissible fade show" role="alert">Deleted Successfully. <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>';
+            return $successAlert;
+        }else{
+            $failureAlert = '<div class="alert alert-danger alert-dismissible fade show" role="alert">Failed to Delete. <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>';
+            return $failureAlert;
+        }
+    }
+
+    public function getAmountPrice($customer_id){
+        $query = "SELECT price FROM tbl_order WHERE customer_id = '$customer_id'";
+        $get_price = $this->db->select($query);
+        return $get_price;
+    }
+
+    public function get_cart_ordered($customer_id){
+        $query = "SELECT * FROM tbl_order WHERE customer_id = '$customer_id'";
+        $get_cart_ordered = $this->db->select($query);
+        return $get_cart_ordered;
+    }
+
+    public function get_inbox_cart(){
+        $query = "SELECT * FROM tbl_order ORDER BY date_order";
+        $get_inbox_cart = $this->db->select($query);
+        return $get_inbox_cart;
+    }
+
+    public function shifted($id, $time, $price){
+        $id = mysqli_real_escape_string($this->db->link, $id);
+        $time = mysqli_real_escape_string($this->db->link, $time);
+        $price = mysqli_real_escape_string($this->db->link, $price);
+        
+        $query = "UPDATE tbl_order SET status = '1'
+                WHERE id = '$id' AND date_order='$time' AND price='$price'";
+        $result = $this->db->update($query);
+        if($result){
+            $successAlert = '<div class="alert alert-success alert-dismissible fade show" role="alert">Updated Successfully. <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>';
+            return $successAlert;
+        }else{
+            $failureAlert = '<div class="alert alert-danger alert-dismissible fade show" role="alert">Failed to Update. <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>';
+            return $failureAlert;
+        }
     }
 }
 

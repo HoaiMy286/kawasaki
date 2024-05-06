@@ -59,8 +59,8 @@ $user = new user();
 		</div>
 		<div class="header_top_right d-flex align-items-center">
 			<div class="search_box me-3">
-				<form>
-					<div class="input-group">
+				<form style="margin-top: 14px;">
+					<div class="input-group" >
 						<input type="text" class="form-control" placeholder="Search for Products" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search for Products';}">
 						<button class="btn btn-outline-secondary" type="submit">SEARCH</button>
 					</div>
@@ -114,6 +114,17 @@ $user = new user();
 
 		?>
 		<?php 
+			$customer_id = Session::get('customer_id');
+			$check_order = $cart->check_order($customer_id);
+			if($check_order == true){
+				echo '<a href="orderdetails.php"><h4>ORDERED</h4></a>';
+			}else{
+				echo '';
+			}
+
+		?>
+
+		<?php 
 			$login_check = Session::get('customer_login');
 			if($login_check == false){
 				echo '';
@@ -122,5 +133,5 @@ $user = new user();
 			}
 
 		?>
-		<a href="contact.php"><h4>CONTACT</h4></a>
+		<a href="#contact"><h4>CONTACT</h4></a>
 	</div>

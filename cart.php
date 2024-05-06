@@ -69,7 +69,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
                                     </td>
                                     <td><?php echo $total = $result['price'] * $result['quantity'] ?></td>
                                     <td>
-                                        <a href="?cartid=<?php echo $result['cartId'] ?>" style="color: red; text-decoration: none;">Delete</a>
+                                        <button type="button" class="btn btn-danger" onclick="window.location.href='?cartid=<?php echo $result['cartId'] ?>'">
+                                            Delete
+                                        </button>
                                     </td>
                                 </tr>
                         <?php
@@ -103,7 +105,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
 
         <div class="row justify-content-center">
             <div class="col-md-12 text-center"> <!-- Sử dụng text-center để căn giữa nội dung -->
-                <a href="payment.php" class="btn btn-primary btn-lg">Payment</a>
+                <?php 
+                $login_check = Session::get('customer_login');
+                if($login_check == true){
+                    echo '<a href="payment.php" class="btn btn-primary btn-lg">Payment</a>';
+                }else{
+                    echo '<a href="login.php" class="btn btn-primary btn-lg">Payment</a>';
+                }
+            ?>
             </div>
         </div>
 

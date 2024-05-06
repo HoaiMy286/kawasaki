@@ -37,7 +37,7 @@
 					<div class="card-body">
 						<h5 class="p3"><?php echo $result_ninja['productName']; ?></h5>
 						<div class="cart-greenSpacer"></div>
-						<p class="card-text">Price: <?php echo $result_ninja['productPrice'] ?>đ</p>
+						<p class="card-text">Price: <?php echo number_format($result_ninja['productPrice'], 0, '.', ','); ?>đ</p>
 						<!-- <a href="#" class="btn btn-primary">Buy now</a> -->
 					</div>
 				</a>
@@ -66,7 +66,7 @@
 					<div class="card-body">
 						<h5 class="p3"><?php echo $result_z['productName']; ?></h5>
 						<div class="cart-greenSpacer"></div>
-						<p class="card-text">Price: <?php echo $result_z['productPrice'] ?>đ</p>
+						<p class="card-text">Price: <?php echo number_format($result_z['productPrice'], 0, '.', ','); ?>đ</p>
 					</div>
 				</a>
 			</div>
@@ -94,7 +94,7 @@
 					<div class="card-body">
 						<h5 class="p3"><?php echo $result_vulcan['productName']; ?></h5>
 						<div class="cart-greenSpacer"></div>
-						<p class="card-text">Price: <?php echo $result_vulcan['productPrice'] ?>đ</p>
+						<p class="card-text">Price: <?php echo number_format($result_vulcan['productPrice'], 0, '.', ','); ?>đ</p>
 					</div>
 				</a>
 			</div>

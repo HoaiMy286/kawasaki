@@ -3,8 +3,8 @@
 
     <nav class="dashboard-nav-list">
         <a href="index.php" class="dashboard-nav-item active"><i class="bi bi-house-door-fill"></i>Home</a>
-        <a href="#" class="dashboard-nav-item"><i class="bi bi-chat-fill"></i>Inbox</a>
-        <a href="#" class="dashboard-nav-item"><i class="bi bi-arrow-up-square-fill"></i>Visit Website </a>
+        <a href="inbox.php" class="dashboard-nav-item"><i class="bi bi-chat-fill"></i>Inbox</a>
+        <a href="../index.php" class="dashboard-nav-item"><i class="bi bi-arrow-up-square-fill"></i>Visit Website </a>
         <div class='dashboard-nav-dropdown'>
             <a href="#!" class="dashboard-nav-item dashboard-nav-dropdown-toggle"><i class="bi bi-person-lines-fill"></i> Site option </a>
             <div class='dashboard-nav-dropdown-menu'>
@@ -21,13 +21,13 @@
                 <a href="#" class="dashboard-nav-dropdown-item"> Projections</a>
             </div>
         </div>
-        <div class='dashboard-nav-dropdown'>
+        <!-- <div class='dashboard-nav-dropdown'>
             <a href="#!" class="dashboard-nav-item dashboard-nav-dropdown-toggle"><i class="bi bi-plus-square-fill"></i>Slider Option</a>
             <div class='dashboard-nav-dropdown-menu'>
                 <a href="addslider.php" class="dashboard-nav-dropdown-item">Add Slider</a>
                 <a href="sliderlist.php" class="dashboard-nav-dropdown-item">Slider List</a>
             </div>
-        </div>
+        </div> -->
         <div class='dashboard-nav-dropdown'>
             <a href="#!" class="dashboard-nav-item dashboard-nav-dropdown-toggle"><i class="bi bi-tag-fill"></i>Category Option</a>
             <div class='dashboard-nav-dropdown-menu'>

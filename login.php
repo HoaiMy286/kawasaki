@@ -4,7 +4,7 @@
 <?php 
     $login_check = Session::get('customer_login');
     if ($login_check) {
-        header('Location:order.php');
+        header('Location:cart.php');
     }
 ?>
 
@@ -78,7 +78,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" &&  isset($_POST['login'])) {
                                     <input type="text" name="address" placeholder="Enter address...." class="form-control mr-3">
                                 </div>
                                 <div class="form-group mb-3 mr-3">
-                                    <select id="country" name="country" onchange="change_country(this.value)" class="form-control frm-field required">
+                                    <select id="country" name="country" class="form-control frm-field required">
                                         <option value="null">Select a Country</option>
                                         <option value="AF">Vietnam</option>
                                         <option value="AL">Cambodia</option>
